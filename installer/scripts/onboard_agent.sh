@@ -113,6 +113,7 @@ if [ "$EUID" != 0 ]; then
     SUDO='sudo'
 fi
 
+echo "Always install the 64-bit OMS Linux agent."
 wget -O ${BUNDLE_X64} ${GITHUB_RELEASE_X64}${BUNDLE_X64} && $SUDO sh ./${BUNDLE_X64} ${bundleParameters}
 
 # # Download, install, and onboard OMSAgent for Linux, depending on architecture of machine
