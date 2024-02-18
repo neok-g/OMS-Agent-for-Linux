@@ -113,13 +113,15 @@ if [ "$EUID" != 0 ]; then
     SUDO='sudo'
 fi
 
-# Download, install, and onboard OMSAgent for Linux, depending on architecture of machine
-if [ $(uname -m) = 'x86_64' ] || [ $(uname -m) = 'aarch64' ]; then
-    # x64 architecture
-    wget -O ${BUNDLE_X64} ${GITHUB_RELEASE_X64}${BUNDLE_X64} && $SUDO sh ./${BUNDLE_X64} ${bundleParameters}
-else
-    # x86 architecture
-    echo "Note that there will be no further releases of the 32-bit OMS Linux agent."
-    echo "The final version with 32-bit support is 1.12.15-0, which will now be installed."
-    wget -O ${BUNDLE_X86} ${GITHUB_RELEASE_X86}${BUNDLE_X86} && $SUDO sh ./${BUNDLE_X86} ${bundleParameters}
-fi
+wget -O ${BUNDLE_X64} ${GITHUB_RELEASE_X64}${BUNDLE_X64} && $SUDO sh ./${BUNDLE_X64} ${bundleParameters}
+
+# # Download, install, and onboard OMSAgent for Linux, depending on architecture of machine
+# if [ $(uname -m) = 'x86_64' ] || [ $(uname -m) = 'aarch64' ]; then
+#     # x64 architecture
+#     wget -O ${BUNDLE_X64} ${GITHUB_RELEASE_X64}${BUNDLE_X64} && $SUDO sh ./${BUNDLE_X64} ${bundleParameters}
+# else
+#     # x86 architecture
+#     echo "Note that there will be no further releases of the 32-bit OMS Linux agent."
+#     echo "The final version with 32-bit support is 1.12.15-0, which will now be installed."
+#     wget -O ${BUNDLE_X86} ${GITHUB_RELEASE_X86}${BUNDLE_X86} && $SUDO sh ./${BUNDLE_X86} ${bundleParameters}
+# fi
